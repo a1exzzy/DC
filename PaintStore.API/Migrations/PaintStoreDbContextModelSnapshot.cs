@@ -27,14 +27,14 @@ namespace PaintStore.API.Migrations
                     b.Property<int>("OrdersId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PaintProductsName")
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("PaintProductsId")
+                        .HasColumnType("int");
 
-                    b.HasKey("OrdersId", "PaintProductsName");
+                    b.HasKey("OrdersId", "PaintProductsId");
 
-                    b.HasIndex("PaintProductsName");
+                    b.HasIndex("PaintProductsId");
 
-                    b.ToTable("OrderPaintProduct", (string)null);
+                    b.ToTable("OrderPaintProduct");
                 });
 
             modelBuilder.Entity("PaintStore.Models.Order", b =>
@@ -55,18 +55,21 @@ namespace PaintStore.API.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("PaintStore.Models.PaintProduct", b =>
                 {
-                    b.Property<string>("Name")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -74,9 +77,9 @@ namespace PaintStore.API.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
-                    b.ToTable("PaintProducts", (string)null);
+                    b.ToTable("PaintProducts");
                 });
 
             modelBuilder.Entity("PaintStore.Models.User", b =>
@@ -97,7 +100,7 @@ namespace PaintStore.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("OrderPaintProduct", b =>
@@ -110,7 +113,7 @@ namespace PaintStore.API.Migrations
 
                     b.HasOne("PaintStore.Models.PaintProduct", null)
                         .WithMany()
-                        .HasForeignKey("PaintProductsName")
+                        .HasForeignKey("PaintProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

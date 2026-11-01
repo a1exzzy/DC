@@ -12,8 +12,8 @@ using PaintStore.API.Data;
 namespace PaintStore.API.Migrations
 {
     [DbContext(typeof(PaintStoreDbContext))]
-    [Migration("20261027062121_user_order_relation_NtoN")]
-    partial class user_order_relation_NtoN
+    [Migration("20261101155728_initial_fix_paintproduct_primarykey")]
+    partial class initial_fix_paintproduct_primarykey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,12 +30,12 @@ namespace PaintStore.API.Migrations
                     b.Property<int>("OrdersId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PaintProductsName")
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("PaintProductsId")
+                        .HasColumnType("int");
 
-                    b.HasKey("OrdersId", "PaintProductsName");
+                    b.HasKey("OrdersId", "PaintProductsId");
 
-                    b.HasIndex("PaintProductsName");
+                    b.HasIndex("PaintProductsId");
 
                     b.ToTable("OrderPaintProduct");
                 });
@@ -63,13 +63,16 @@ namespace PaintStore.API.Migrations
 
             modelBuilder.Entity("PaintStore.Models.PaintProduct", b =>
                 {
-                    b.Property<string>("Name")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
@@ -77,7 +80,7 @@ namespace PaintStore.API.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.ToTable("PaintProducts");
                 });
@@ -113,7 +116,7 @@ namespace PaintStore.API.Migrations
 
                     b.HasOne("PaintStore.Models.PaintProduct", null)
                         .WithMany()
-                        .HasForeignKey("PaintProductsName")
+                        .HasForeignKey("PaintProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -6,11 +6,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PaintStore.API.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initial_fix_paintproduct_primarykey : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "PaintProducts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OrderId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PaintProducts", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -46,44 +61,51 @@ namespace PaintStore.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PaintProducts",
+                name: "OrderPaintProduct",
                 columns: table => new
                 {
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false)
+                    OrdersId = table.Column<int>(type: "int", nullable: false),
+                    PaintProductsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PaintProducts", x => x.Name);
+                    table.PrimaryKey("PK_OrderPaintProduct", x => new { x.OrdersId, x.PaintProductsId });
                     table.ForeignKey(
-                        name: "FK_PaintProducts_Orders_OrderId",
-                        column: x => x.OrderId,
+                        name: "FK_OrderPaintProduct_Orders_OrdersId",
+                        column: x => x.OrdersId,
                         principalTable: "Orders",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrderPaintProduct_PaintProducts_PaintProductsId",
+                        column: x => x.PaintProductsId,
+                        principalTable: "PaintProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrderPaintProduct_PaintProductsId",
+                table: "OrderPaintProduct",
+                column: "PaintProductsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Orders_UserId",
                 table: "Orders",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PaintProducts_OrderId",
-                table: "PaintProducts",
-                column: "OrderId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "PaintProducts");
+                name: "OrderPaintProduct");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "PaintProducts");
 
             migrationBuilder.DropTable(
                 name: "Users");

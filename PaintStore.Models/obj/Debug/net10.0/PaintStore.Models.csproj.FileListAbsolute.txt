@@ -9,3 +9,4 @@ c:\Users\83654\..Projects\PaintStore\PaintStore.Models\obj\Debug\net10.0\PaintSt
 c:\Users\83654\..Projects\PaintStore\PaintStore.Models\obj\Debug\net10.0\refint\PaintStore.Models.dll
 c:\Users\83654\..Projects\PaintStore\PaintStore.Models\obj\Debug\net10.0\PaintStore.Models.pdb
 c:\Users\83654\..Projects\PaintStore\PaintStore.Models\obj\Debug\net10.0\ref\PaintStore.Models.dll
+C:\Users\83654\..Projects\PaintStore\PaintStore.Models\obj\Debug\net10.0\PaintStore.Models.sourcelink.json

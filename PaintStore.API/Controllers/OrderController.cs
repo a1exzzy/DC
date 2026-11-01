@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PaintStore.API.Data;
 using PaintStore.Models;
 using PaintStore.Models.DTOs;
@@ -29,12 +30,15 @@ namespace PaintStore.API.Controllers
         [HttpGet("{id}")]
         public ActionResult GetOrderById (int id)
         {
-            Order order = new Order();
-            if (id == order.Id)
+            Order? order = _dbContext.Orders.Include(o => o.User)
+            .Include(o=>o.PaintProducts).FirstOrDefault(o=>o.Id == id);
+            
+
+            if (order == null)
             {
-                return Ok(order);
+                return NotFound();
             }
-            return NotFound();
+            return Ok(order);
         }
 
 
