@@ -5,7 +5,14 @@ namespace PaintStore.Models;
 public class Order
 {
     public int Id { get; set; }
+
+    //Order to PaintProduct 1:N
+    //EF will apply relation based on list
     public List<PaintProduct> PaintProducts { get; set; }
+
+    //User 的key
+    public User User  { get; set; }
+    public int UserId { get; set; }
     public DateTime CreatAt { get; set; }
 
     // public decimal TotalPrice{ get
@@ -19,10 +26,9 @@ public class Order
     //Computed Value只读的值
     public decimal TotalPrice {get => PaintProducts.Sum(p=>p.Price);} 
 
-    public Order(int id, List<PaintProduct> paintProducts)
+    public Order()
     {
-        Id = id;
-        PaintProducts = paintProducts;
+        PaintProducts = new List<PaintProduct>();
         CreatAt = DateTime.Now;
     }
 }

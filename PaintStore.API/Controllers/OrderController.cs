@@ -1,7 +1,10 @@
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PaintStore.API.Data;
 using PaintStore.Models;
+using PaintStore.Models.DTOs;
+
 
 
 namespace PaintStore.API.Controllers
@@ -11,11 +14,14 @@ namespace PaintStore.API.Controllers
     public class OrderController : ControllerBase
     {   
         //暂时的order数据 mock data
-        private List<Order> OrdersData;
+        //private List<Order> OrdersData;
+        private PaintStoreDbContext _dbContext;
 
-        public OrderController()
+        public OrderController(PaintStoreDbContext paintStoreDb)
         {
-            OrdersData = new List<Order>();
+            _dbContext = paintStoreDb;
+
+            //OrdersData = new List<Order>();
         }
 
         // public Order(int id, List<PaintProduct> paintProducts, DateTime creatAt)
@@ -23,7 +29,7 @@ namespace PaintStore.API.Controllers
         [HttpGet("{id}")]
         public ActionResult GetOrderById (int id)
         {
-            Order order = new Order(1, new List<PaintProduct>());
+            Order order = new Order();
             if (id == order.Id)
             {
                 return Ok(order);
@@ -35,21 +41,46 @@ namespace PaintStore.API.Controllers
         //Create an order
         //key-value data ----> {}----> json
         [HttpPost]
+        public ActionResult CreateOrder([FromBody]OrderCreateDto orderCreateDto)
+        {
+            Order order = new Order();
+            //把user关联上
+            order.UserId = orderCreateDto.UserId;
+            //
+            List<PaintProduct> paintProducts = _dbContext.PaintProducts.Where(p => orderCreateDto.PaintProductIds.Contains(p.Id)).ToList();
+      
+            //把paintproduct数据关联上
+            order.PaintProducts = paintProducts;
+
+            _dbContext.Orders.Add(order);
+            _dbContext.SaveChanges();
+            return Created($"GetOrderById/{order.Id}",order);
+
+        }
+
+
+
+/*
+        //Create an order
+        //key-value data ----> {}----> json
+        [HttpPost]
         public ActionResult CreateOrder([FromBody]Order order){
             // if(order.Id == 0)
             // {
             //     throw new Exception("Order id is invalid");
             // }
-            
+
             //假设这个是数据库传来的数据 
+            
             order.Id = 100;
 
             if (order.PaintProducts.Count <= 0)
             {
                 throw new Exception("Cannot create empty order since paintproducts number <=0");
             }
+            
             //我们暂时的Order数据
-            OrdersData.Add(order);
+            ////OrdersData.Add(order);
             
             //我们想要返回201
             //return StatusCode(201);
@@ -65,12 +96,14 @@ namespace PaintStore.API.Controllers
 
         //relyon URL to pass ----> http://localhost:5065/api/Order/GetOrderWithPrice?minPrice=10&maxPRice=1000
 
+
+
         [HttpGet("GetPriceWithPriceRange")]
         public ActionResult GetOrderWithPriceRange([FromQuery] decimal minPrice, [FromQuery] decimal maxPrice)
         {
 
             //手动模拟
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (1,"Dulux", 100)}));
+            ////OrdersData.Add(new Order());
             List<Order> orders = OrdersData.Where(o => o.TotalPrice > minPrice && o.TotalPrice < maxPrice).ToList();
 
             return Ok(orders);
@@ -83,17 +116,17 @@ namespace PaintStore.API.Controllers
         [HttpGet("GetPaginatedOrders")]
         public ActionResult GetPaginatedOrders(int pageNumber, int pageSize)
         {
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (1,"Dulux", 100)}));
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (2,"Basic", 120)}));
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (3,"Dark", 130)}));
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (4,"Dulux", 100)}));
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (5,"Basic", 120)}));
-            OrdersData.Add(new Order(1, new List<PaintProduct>(){new PaintProduct (6,"Dark", 130)}));
+            OrdersData.Add(new Order());
+            OrdersData.Add(new Order());
+            OrdersData.Add(new Order());
+            OrdersData.Add(new Order());
+            OrdersData.Add(new Order());
+            OrdersData.Add(new Order());
 
             List<Order> result = OrdersData.Skip((pageNumber-1) * pageSize).Take(pageSize).ToList();
             
             return Ok(result);
         }
-
+        */
     }
 }
