@@ -12,4 +12,12 @@ public class User
     //User & Order 1 : N
     public List<Order> Orders { get; set; }
 
+
+/*
+    public User(string name, string email)
+    {
+        Name = name;
+        Email = email ;
+    }
+*/
 }

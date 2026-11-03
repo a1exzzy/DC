@@ -12,7 +12,7 @@ public class PaintProduct
     //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     //public int Idd { get; set; }
 
-    [MaxLength(50)]//名字最长
+    //[MaxLength(50)]//名字最长
     public string Name { get; set; }
     [Required] //不能null
     public decimal Price { get; set; }
