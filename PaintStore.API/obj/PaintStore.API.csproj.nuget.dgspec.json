@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj": {}
+    "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj": {
+    "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+        "projectUniqueName": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
         "projectName": "PaintStore.API",
-        "projectPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+        "projectPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
         "packagesPath": "C:\\Users\\83654\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\obj\\",
+        "outputPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj": {
-                "projectPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj"
+              "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj": {
+                "projectPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj"
               }
             }
           }
@@ -69,6 +69,18 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[10.0.14, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[10.0.0, )"
+            },
+            "Serilog.Sinks.Console": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -508,14 +520,14 @@
         }
       }
     },
-    "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj": {
+    "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj",
+        "projectUniqueName": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj",
         "projectName": "PaintStore.Models",
-        "projectPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj",
+        "projectPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\PaintStore.Models.csproj",
         "packagesPath": "C:\\Users\\83654\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\obj\\",
+        "outputPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

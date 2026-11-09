@@ -11,16 +11,30 @@ namespace PaintStore.API.Controllers
     public class UserController : ControllerBase
     {
         private UserService _userService;
-        public UserController( )
-        { 
+        private ILogger<UserController> _logger;
+        public UserController( UserService userService, ILogger<UserController> logger )
+        {
+            _userService = userService;
+            _logger = logger;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// 可以补全啊 见笔记
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult CreateUser([FromBody] User user )
         {
+            _logger.LogInformation("Create User: Received request");
             User newUser = _userService.CreateUser(user);
 
-            return Created($"GetUserById",user);
+            _logger.LogInformation($"Create User: User created with id {newUser.Id}");
+            return Created($"GetUserById",newUser);
         }  
     }
 }

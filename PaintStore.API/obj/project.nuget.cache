@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "u3W9y3GRey0=",
+  "dgSpecHash": "yKcNp47X0Hg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+  "projectFilePath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\83654\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
@@ -40,6 +40,15 @@
     "C:\\Users\\83654\\.nuget\\packages\\microsoft.visualstudio.solutionpersistence\\1.0.52\\microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\mono.texttemplating\\3.0.0\\mono.texttemplating.3.0.0.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\newtonsoft.json\\13.0.4\\newtonsoft.json.13.0.4.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog\\4.3.0\\serilog.4.3.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.aspnetcore\\10.0.0\\serilog.aspnetcore.10.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.extensions.hosting\\10.0.0\\serilog.extensions.hosting.10.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.extensions.logging\\10.0.0\\serilog.extensions.logging.10.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.formatting.compact\\3.0.0\\serilog.formatting.compact.3.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.settings.configuration\\10.0.0\\serilog.settings.configuration.10.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.sinks.console\\6.1.1\\serilog.sinks.console.6.1.1.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.sinks.debug\\3.0.0\\serilog.sinks.debug.3.0.0.nupkg.sha512",
+    "C:\\Users\\83654\\.nuget\\packages\\serilog.sinks.file\\7.0.0\\serilog.sinks.file.7.0.0.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\system.clientmodel\\1.8.0\\system.clientmodel.1.8.0.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\system.codedom\\6.0.0\\system.codedom.6.0.0.nupkg.sha512",
     "C:\\Users\\83654\\.nuget\\packages\\system.composition\\9.0.0\\system.composition.9.0.0.nupkg.sha512",
@@ -59,9 +68,9 @@
       "code": "NU1902",
       "level": "Warning",
       "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7",
-      "projectPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+      "projectPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+      "filePath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
       "libraryId": "System.Security.Cryptography.Pkcs",
       "targetGraphs": [
         "net10.0"
@@ -71,9 +80,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "Package 'System.Security.Cryptography.Pkcs' 9.0.11 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx",
-      "projectPath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+      "projectPath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
+      "filePath": "c:\\Users\\83654\\..Projects\\PaintStore\\PaintStore.API\\PaintStore.API.csproj",
       "libraryId": "System.Security.Cryptography.Pkcs",
       "targetGraphs": [
         "net10.0"

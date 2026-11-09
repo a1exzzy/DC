@@ -7,10 +7,14 @@ namespace PaintStore.API.Services;
 public class UserService
 {
     private UserRepository _userRepository;
+    //加上configuration
+    private IConfiguration _configuration;
 
-    public UserService()
+    public UserService(UserRepository userRepository, IConfiguration configuration)
     {
-        _userRepository = new UserRepository();
+        _userRepository = userRepository;
+        //2
+        _configuration = configuration;
     }
     public User CreateUser(User user)
     {
@@ -18,6 +22,8 @@ public class UserService
         {
             throw new ArgumentException("Email and Name can not be null or empty");
         }
+
+        var key = _configuration.GetSection("ApiKeys:OpenAI");
 
         User newUSer = _userRepository.AddUserToDb(user);
         return newUSer;

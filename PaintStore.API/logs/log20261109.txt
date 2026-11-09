@@ -1,0 +1,4 @@
+2026-11-09 16:24:26.435 +11:00 [INF] Now listening on: http://localhost:5065
+2026-11-09 16:24:26.483 +11:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-11-09 16:24:26.483 +11:00 [INF] Hosting environment: Development
+2026-11-09 16:24:26.484 +11:00 [INF] Content root path: C:\Users\83654\..Projects\PaintStore\PaintStore.API

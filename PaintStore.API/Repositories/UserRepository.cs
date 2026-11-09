@@ -10,9 +10,9 @@ public class UserRepository
     //只有在repository
     private PaintStoreDbContext _dbContext;
 
-    public UserRepository()
+    public UserRepository(PaintStoreDbContext paintStoreDb)
     {
-        
+        _dbContext = paintStoreDb;
     }
 
     public User AddUserToDb(User user)
